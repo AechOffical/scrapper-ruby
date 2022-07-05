@@ -11,6 +11,8 @@
 /test/version_tmp/
 /tmp/
 
+notes.txt
+
 # Used by dotenv library to load environment variables.
 # .env
 
