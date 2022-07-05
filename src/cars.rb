@@ -7,10 +7,10 @@ class Cars
     @cars = Array.new
     @cars_urls = Array.new
     @number_of_pages = number_of_pages
-    self.get_cars
+    self.fetch_cars
   end
 
-  def get_cars
+  def fetch_cars
     i = 1
     while i <= @number_of_pages do
       doc = Nokogiri::HTML(URI.open(@url + "?page=" + i.to_s))
@@ -42,7 +42,7 @@ class Cars
         begin
         row += item.data.fetch(index) + separator
         rescue  IndexError
-          puts "nie ma takiego atrybutu: " + index
+          puts item.model + " nie ma takiego atrybutu: " + index
         end
 
       end
