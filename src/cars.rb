@@ -50,6 +50,7 @@ class Cars
       row += item.url.value + separator
       row += "\n"
       result += row
+      sleep 0.2
     end
     result
   end
