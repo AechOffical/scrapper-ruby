@@ -73,7 +73,6 @@
 
   <ul class="link-list" role="directory">
     <li ><a href="#method-c-new">::new</a>
-    <li ><a href="#method-i-fetch_cars">#fetch_cars</a>
     <li ><a href="#method-i-read_cars">#read_cars</a>
     <li ><a href="#method-i-read_cars_pdf">#read_cars_pdf</a>
   </ul>
@@ -145,7 +144,7 @@
         </div>
 
         <div class="method-description">
-          <p>Zwraca dane na temat aut w formie pliku csv argumenty: data_indexes - array zawierający indexy szczegółów na temat samochodu separator - separator, którym mają być oddzielone dane header - czy ma zawierać wiersz nagłówkowy</p>
+          <p>Zwraca dane na temat aut w formie pliku csv argumenty: data_indexes - array zawierający indexy szczegółów na temat samochodu separator - separator, którym mają być oddzielone dane header - true/false czy ma zawierać wiersz nagłówkowy</p>
 
           <div class="method-source-code" id="read_cars-source">
             <pre><span class="ruby-comment"># File cars.rb, line 26</span>
@@ -224,43 +223,10 @@
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">text</span> <span class="ruby-string">&quot;Link do strony auta: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@url</span>
 
+    <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">image</span> <span class="ruby-constant">URI</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">item</span>.<span class="ruby-identifier">fetch_car_image</span>), <span class="ruby-value">scale:</span> <span class="ruby-value">0.3</span>
+
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">pdf</span>.<span class="ruby-identifier">render_file</span> <span class="ruby-string">&#39;result.pdf&#39;</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-    </section>
-
-     <section id="private-instance-5Buntitled-5D-method-details" class="method-section">
-       <header>
-         <h3>Private Instance Methods</h3>
-       </header>
-
-      <div id="method-i-fetch_cars" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">fetch_cars</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-
-        <div class="method-description">
-          <p>prywatna metoda pobierająca URL do podstron samocodów, a następnie tworzy nowe obiekty samochodów i dodaje je do hashmapy @cars</p>
-
-          <div class="method-source-code" id="fetch_cars-source">
-            <pre><span class="ruby-comment"># File cars.rb, line 96</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fetch_cars</span>
-  <span class="ruby-identifier">i</span> = <span class="ruby-value">1</span>
-  <span class="ruby-keyword">while</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-ivar">@number_of_pages</span> <span class="ruby-keyword">do</span>
-    <span class="ruby-identifier">doc</span> = <span class="ruby-constant">Nokogiri</span><span class="ruby-operator">::</span><span class="ruby-constant">HTML</span>(<span class="ruby-constant">URI</span>.<span class="ruby-identifier">open</span>(<span class="ruby-ivar">@url</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;?page=&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">to_s</span>))
-    <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">xpath</span>(<span class="ruby-string">&quot;//h2[@data-testid=&#39;ad-title&#39;]/a/@href&quot;</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
-      <span class="ruby-ivar">@cars</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Car</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">item</span>)
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
         </div>

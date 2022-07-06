@@ -43,6 +43,12 @@ class Car
     end
   end
 
+  ##
+  # metoda zwracająca adres URL zdjęcia samochodu
+  def fetch_car_image
+    @page.xpath("//div[@class='photo-item']/img/@data-lazy").first
+  end
+
   private :fetch_car_data, :fetch_car_model, :fetch_car_price
 
 end

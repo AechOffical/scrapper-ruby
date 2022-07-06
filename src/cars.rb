@@ -22,7 +22,7 @@ class Cars
   # argumenty:
   # data_indexes - array zawierający indexy szczegółów na temat samochodu
   # separator - separator, którym mają być oddzielone dane
-  # header - czy ma zawierać wiersz nagłówkowy
+  # header - true/false czy ma zawierać wiersz nagłówkowy
   def read_cars(data_indexes, separator = ",", header = true)
     result = ""
     if header
@@ -83,6 +83,8 @@ class Cars
 
       end
       pdf.text "Link do strony auta: " + @url
+
+      pdf.image URI.open(item.fetch_car_image), scale: 0.3
 
     end
     pdf.render_file 'result.pdf'

@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>class Car - RDoc Documentation</title>
+<title>car - RDoc Documentation</title>
 
 <script type="text/javascript">
   var rdoc_rel_prefix = "./";
@@ -21,7 +21,7 @@
 <link href="./css/rdoc.css" rel="stylesheet">
 
 
-<body id="top" role="document" class="class">
+<body id="top" role="document" class="file">
 <nav role="navigation">
   <div id="project-navigation">
     <div id="home-section" role="region" title="Quick navigation" class="nav-section">
@@ -55,203 +55,24 @@
 
   
 
-  <div id="class-metadata">
+  <div id="project-metadata">
     
-    
-<div id="parent-class-section" class="nav-section">
-  <h3>Parent</h3>
+<div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
 
-  <p class="link">Object
-</div>
-
-    
-    
-    
-<!-- Method Quickref -->
-<div id="method-list-section" class="nav-section">
-  <h3>Methods</h3>
-
-  <ul class="link-list" role="directory">
-    <li ><a href="#method-c-new">::new</a>
-    <li ><a href="#method-i-fetch_car_data">#fetch_car_data</a>
-    <li ><a href="#method-i-fetch_car_model">#fetch_car_model</a>
-    <li ><a href="#method-i-fetch_car_price">#fetch_car_price</a>
+  <ul class="link-list">
+    <li><a href="./car.html">car</a>
+    <li><a href="./result_csv.html">result.csv</a>
   </ul>
 </div>
 
   </div>
 </nav>
 
-<main role="main" aria-labelledby="class-Car">
-  <h1 id="class-Car" class="class">
-    class Car
-  </h1>
+<main role="main" aria-label="Page car">
 
-  <section class="description">
-    
-<p>Klasa reprezentuje pojedyńczą instancje samochodu, pobraną z podstrony danego samochodu sprzedawanego na OTOMOTO</p>
-
-  </section>
-
-  <section id="5Buntitled-5D" class="documentation-section">
-
-
-
-    <section class="attribute-method-details" class="method-section">
-      <header>
-        <h3>Attributes</h3>
-      </header>
-
-      <div id="attribute-i-data" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">data</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
-      <div id="attribute-i-model" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">model</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
-      <div id="attribute-i-price" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">price</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
-      <div id="attribute-i-url" class="method-detail">
-        <div class="method-heading attribute-method-heading">
-          <span class="method-name">url</span><span
-            class="attribute-access-type">[R]</span>
-        </div>
-
-        <div class="method-description">
-        
-        </div>
-      </div>
-    </section>
-
-
-     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
-       <header>
-         <h3>Public Class Methods</h3>
-       </header>
-
-      <div id="method-c-new" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">new</span><span
-            class="method-args">(car_page)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-
-        <div class="method-description">
-          <p>Na podstawie otrzymanego adresu URL podstrony samochodu, np: <a href="https://www.otomoto.pl/oferta/volkswagen-tiguan-life-2-0-tdi-150-km-od-reki-plichta-gdansk-ID6EJroo.html">www.otomoto.pl/oferta/volkswagen-tiguan-life-2-0-tdi-150-km-od-reki-plichta-gdansk-ID6EJroo.html</a>, pobierana jest strona HTML i zapisywana w @page. Pobierane z tej strony są następujące dane: @model : String - nazwa modelu samochodu @data : Hash - zbiera wszystkie dane zawarte w części szczegóły na podstronie otomoto @price : String - zawiera cenę samochodu</p>
-
-          <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File car.rb, line 17</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">car_page</span>)
-  <span class="ruby-ivar">@url</span> = <span class="ruby-identifier">car_page</span>
-  <span class="ruby-ivar">@page</span> = <span class="ruby-constant">Nokogiri</span><span class="ruby-operator">::</span><span class="ruby-constant">HTML</span>(<span class="ruby-constant">URI</span>.<span class="ruby-identifier">open</span>(<span class="ruby-ivar">@url</span>))
-  <span class="ruby-ivar">@model</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">fetch_car_model</span>
-  <span class="ruby-ivar">@data</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
-  <span class="ruby-ivar">@price</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">fetch_car_price</span>
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">fetch_car_data</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-    </section>
-
-     <section id="private-instance-5Buntitled-5D-method-details" class="method-section">
-       <header>
-         <h3>Private Instance Methods</h3>
-       </header>
-
-      <div id="method-i-fetch_car_data" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">fetch_car_data</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-
-        <div class="method-description">
-          <p>prywatna metoda dodająca do @data pokolei dane ze szczegółów w postaci hashmapy</p>
-
-          <div class="method-source-code" id="fetch_car_data-source">
-            <pre><span class="ruby-comment"># File car.rb, line 40</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fetch_car_data</span>
-  <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">css</span>(<span class="ruby-string">&quot;li.offer-params__item&quot;</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
-      <span class="ruby-ivar">@data</span>.<span class="ruby-identifier">store</span>(<span class="ruby-identifier">item</span>.<span class="ruby-identifier">css</span>(<span class="ruby-string">&quot;.offer-params__label&quot;</span>).<span class="ruby-identifier">text</span>.<span class="ruby-identifier">strip</span>, <span class="ruby-identifier">item</span>.<span class="ruby-identifier">css</span>(<span class="ruby-string">&quot;.offer-params__value&quot;</span>).<span class="ruby-identifier">text</span>.<span class="ruby-identifier">strip</span>)
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-      <div id="method-i-fetch_car_model" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">fetch_car_model</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-
-        <div class="method-description">
-          <p>prywatna metoda zwracająca nazwę modelu samochodu</p>
-
-          <div class="method-source-code" id="fetch_car_model-source">
-            <pre><span class="ruby-comment"># File car.rb, line 28</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fetch_car_model</span>
-  <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">css</span>(<span class="ruby-string">&quot;.offer-title&quot;</span>).<span class="ruby-identifier">first</span>.<span class="ruby-identifier">text</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-ivar">@page</span>.<span class="ruby-identifier">css</span>(<span class="ruby-string">&quot;.tags&quot;</span>).<span class="ruby-identifier">first</span>.<span class="ruby-identifier">text</span>.<span class="ruby-identifier">strip</span>, <span class="ruby-string">&quot;&quot;</span>).<span class="ruby-identifier">strip</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-      <div id="method-i-fetch_car_price" class="method-detail ">
-        <div class="method-heading">
-          <span class="method-name">fetch_car_price</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-
-        <div class="method-description">
-          <p>prywatna metoda zwracająca cenę samochodu</p>
-
-          <div class="method-source-code" id="fetch_car_price-source">
-            <pre><span class="ruby-comment"># File car.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">fetch_car_price</span>
-  <span class="ruby-ivar">@page</span>.<span class="ruby-identifier">css</span>(<span class="ruby-string">&quot;.offer-price__number&quot;</span>).<span class="ruby-identifier">first</span>.<span class="ruby-identifier">text</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\s+/</span>, <span class="ruby-string">&quot;&quot;</span>)
-<span class="ruby-keyword">end</span></pre>
-          </div>
-        </div>
-
-
-      </div>
-
-    </section>
-
-  </section>
 </main>
+
 
 
 <footer id="validator-badges" role="contentinfo">
