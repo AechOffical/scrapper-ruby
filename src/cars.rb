@@ -82,7 +82,7 @@ class Cars
         end
 
       end
-      pdf.text "Link do strony auta: " + @url
+      pdf.text "Link do strony auta: " + item.url
 
       pdf.image URI.open(item.fetch_car_image), scale: 0.3
 
